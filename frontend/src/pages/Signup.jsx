@@ -27,10 +27,11 @@ export default function Signup() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-2xl font-bold mb-2">Signup</h1>
+      <h1 className="text-2xl font-bold">Signup to AutoDeck</h1>
+      <p className='text-base text-neutral-300 font-normal py-2 mb-2'>Start generating PPTs and fasten up your work and growth😇</p>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 bg-gray-100 p-6 rounded-xl shadow-md w-80"
+        className="flex flex-col gap-4 bg-neutral-800 p-6 rounded-xl shadow-md w-80"
       >
         <input
           type="text"
@@ -38,7 +39,7 @@ export default function Signup() {
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
           required
-          className="border px-3 py-2 rounded-lg"
+          className="border border-neutral-600 outline-0 px-3 py-2 rounded-lg"
         />
         <input
           type="email"
@@ -46,7 +47,7 @@ export default function Signup() {
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="border px-3 py-2 rounded-lg"
+          className="border border-neutral-600 outline-0 px-3 py-2 rounded-lg"
         />
         <input
           type="password"
@@ -54,18 +55,18 @@ export default function Signup() {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="border px-3 py-2 rounded-lg"
+          className="border border-neutral-600 outline-0 px-3 py-2 rounded-lg"
         />
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          className="bg-violet-600 text-white py-2 rounded-lg hover:bg-violet-700 cursor-pointer"
         >
           Signup
         </button>
         <p className="text-sm flex items-center gap-2 font-normal">
           Already registered?
           <Link to="/signin">
-            <span className="text-blue-500 cursor-pointer hover:underline">
+            <span className="text-violet-500 cursor-pointer hover:underline">
               Signin
             </span>
           </Link>

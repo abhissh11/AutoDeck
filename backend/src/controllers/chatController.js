@@ -26,7 +26,7 @@ export const saveChat = async (req, res) => {
   }
 }
 
-// 📜 Get All Chats for a User
+// Get All Chats for a User
 export const getChats = async (req, res) => {
   try {
     const chats = await Chat.find({ user: req.user._id })
@@ -39,7 +39,7 @@ export const getChats = async (req, res) => {
   }
 };
 
-// 💬 Get Single Chat by ID
+//  Get Single Chat by ID
 export const getChatById = async (req, res) => {
   try {
     const chat = await Chat.findOne({ _id: req.params.id, user: req.user._id });

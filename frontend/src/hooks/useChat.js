@@ -18,7 +18,7 @@ export function useChat() {
     if (token) fetchChats();
   }, [token]);
 
-  // 🧩 Fetch All Chats for Current User
+  // Fetch All Chats for Current User
   const fetchChats = async () => {
     try {
       const res = await fetch(`${apiBase}/chats`, {
@@ -31,7 +31,7 @@ export function useChat() {
     }
   };
 
-  // 🧩 Load Selected Chat
+  //  Load Selected Chat
   const loadChat = async (id) => {
     try {
       const res = await fetch(`${apiBase}/chats/${id}`, {
@@ -47,7 +47,7 @@ export function useChat() {
     }
   };
 
-  // 🧩 Save Chat (create or update)
+  //  Save Chat (create or update)
   const saveChat = async (updatedMessages) => {
     try {
       const res = await fetch(`${apiBase}/chats/save`, {
@@ -139,7 +139,7 @@ export function useChat() {
 
       const finalMessages = [
         ...messages,
-        { sender: "ai", text: `✅ Updated slides based on: "${editPrompt}"`, slides: data.slides },
+        { sender: "ai", text: `Updated slides based on: "${editPrompt}"`, slides: data.slides },
       ];
       setMessages(finalMessages);
       saveChat(finalMessages);

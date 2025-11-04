@@ -17,15 +17,15 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      select: false, //  Hide password by default in queries
+      select: false,
     },
   },
   {
     timestamps: true,
     toJSON: {
       transform(doc, ret) {
-        delete ret.password; // remove password when converting to JSON
-        delete ret.__v;      // remove internal Mongoose field
+        delete ret.password;
+        delete ret.__v;
         return ret;
       },
     },

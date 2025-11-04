@@ -26,10 +26,11 @@ export default function Signin() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-xl font-bold">Signin</h1>
+      <h1 className="text-2xl font-bold">Signin to Autodeck</h1>
+      <p className='text-base text-neutral-300 font-normal pt-2'>Start generating PPTs and fasten up your work and growth😇</p>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 bg-gray-200 p-4 rounded-xl my-8 w-80"
+        className="flex flex-col gap-4 bg-neutral-800 p-4 rounded-xl my-8 w-80"
       >
         <input
           type="email"
@@ -37,7 +38,7 @@ export default function Signin() {
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="border px-4 py-2 rounded-lg"
+          className="border border-neutral-600 outline-0 px-4 py-2 rounded-lg"
         />
         <input
           type="password"
@@ -45,18 +46,18 @@ export default function Signin() {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="border px-4 py-2 rounded-lg"
+          className="border border-neutral-600 outline-0 px-4 py-2 rounded-lg"
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600"
+          className="bg-violet-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-violet-600"
         >
           Signin
         </button>
         <p className="text-sm flex items-center gap-2 font-normal">
           Haven't registered?
           <Link to="/signup">
-            <span className="text-blue-500 cursor-pointer hover:underline">
+            <span className="text-violet-500 cursor-pointer hover:underline">
               Signup
             </span>
           </Link>

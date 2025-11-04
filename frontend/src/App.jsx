@@ -5,6 +5,7 @@ import ChatPage from './pages/ChatPage.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Header from './components/Header.jsx'
 
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route
           path="/"

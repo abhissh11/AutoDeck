@@ -18,7 +18,7 @@ export const generateSlides = async (req, res) => {
     const model = process.env.GEMINI_MODEL || "gemini-2.0-flash";
 
     if (!apiKey) {
-      console.error("❌ Missing GEMINI_API_KEY in .env");
+      console.error("Missing GEMINI_API_KEY in .env");
       return res.status(500).json({ message: "Gemini API key not configured" });
     }
 
@@ -26,7 +26,7 @@ export const generateSlides = async (req, res) => {
       return res.status(400).json({ message: "Prompt is required" });
     }
 
-    console.log(`🧠 Generating slides for: "${prompt}" using model: ${model}`);
+    console.log(`Generating slides for: "${prompt}" using model: ${model}`);
 
     const response = await axios.post(
       `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
@@ -51,7 +51,7 @@ export const generateSlides = async (req, res) => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-goog-api-key": apiKey, // ✅ correct for AI Studio keys
+          "X-goog-api-key": apiKey,
         },
       }
     );
@@ -60,11 +60,11 @@ export const generateSlides = async (req, res) => {
       response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
     if (!textOutput) {
-      console.error("⚠️ No text response from Gemini:", response.data);
+      console.error(" No text response from Gemini:", response.data);
       return res.status(500).json({ message: "No content returned from Gemini" });
     }
 
-    // Safely extract JSON from Gemini text response
+    // extract JSON from Gemini text response
     let slideData;
     try {
       slideData = JSON.parse(textOutput);
@@ -73,14 +73,14 @@ export const generateSlides = async (req, res) => {
       if (jsonMatch) {
         slideData = JSON.parse(jsonMatch[0]);
       } else {
-        console.error("⚠️ Could not parse JSON:", textOutput);
+        console.error("Could not parse JSON:", textOutput);
         return res.status(500).json({ message: "Gemini returned non-JSON response" });
       }
     }
 
     res.json({ success: true, slides: slideData });
   } catch (error) {
-    console.error("❌ Gemini API Error:", error.response?.data || error.message);
+    console.error("Gemini API Error:", error.response?.data || error.message);
     res
       .status(error.response?.status || 500)
       .json({ message: "Failed to generate slides", details: error.message });
@@ -147,7 +147,7 @@ export const editSlides = async (req, res) => {
 
     res.json({ success: true, slides: updatedSlides });
   } catch (error) {
-    console.error("❌ Edit Slides Error:", error.response?.data || error.message);
+    console.error("Edit Slides Error:", error.response?.data || error.message);
     res.status(500).json({ message: "Failed to edit slides" });
   }
 };
@@ -185,15 +185,15 @@ export const generatePPT = async (req, res) => {
     const fileName = `slide_${Date.now()}.pptx`;
     const filePath = path.join(pptDir, fileName);
 
-    // ✅ generate Base64 then convert to Buffer
+    // generate Base64 then convert to Buffer
     const b64 = await pptx.write("base64");
     const buffer = Buffer.from(b64, "base64");
     fs.writeFileSync(filePath, buffer);
 
-    console.log("✅ PowerPoint generated:", filePath);
+    console.log(" PowerPoint generated:", filePath);
     res.json({ success: true, url: `/uploads/${fileName}` });
   } catch (error) {
-    console.error("❌ PPT Generation Error:", error);
+    console.error("PPT Generation Error:", error);
     res.status(500).json({ message: "Failed to generate PPT file" });
   }
 };
@@ -229,7 +229,7 @@ export const generatePDF = async (req, res) => {
 
     doc.end();
 
-    // ✅ Wait for file to finish writing
+    // Wait for file to finish writing
     writeStream.on("finish", () => {
       const fileBuffer = fs.readFileSync(filePath);
       res.setHeader("Content-Type", "application/pdf");
@@ -237,7 +237,7 @@ export const generatePDF = async (req, res) => {
       res.send(fileBuffer);
     });
   } catch (error) {
-    console.error("❌ PDF Generation Error:", error);
+    console.error(" PDF Generation Error:", error);
     res.status(500).json({ message: "Failed to generate PDF file" });
   }
 };
