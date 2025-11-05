@@ -20,18 +20,18 @@ export default function ChatWindow({
   const endRef = useRef(null);
   const [userName, setUserName] = useState("");
 
-  // 🧩 Auto-scroll on new messages
+  // Auto-scroll on new messages
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // 🧩 Get user from localStorage
+  //  Get user from localStorage
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && user.name) setUserName(user.name);
   }, []);
 
-  // 🧩 Handle Enter key submission
+  //  Handle Enter key submission
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -40,7 +40,7 @@ export default function ChatWindow({
   };
 
   return (
-    <div className="flex-1 flex flex-col h-[90svh] bg-[#0d0d0f] text-gray-100">
+    <div className="flex-1 flex flex-col h-screen pt-16 bg-[#0d0d0f] text-gray-100">
       <div className="flex-1 overflow-y-auto px-6 py-10 max-w-3xl mx-auto w-full">
         {messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-gray-400 text-center space-y-3">

@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:3000/api/auth";
+import { apiUrl } from "../lib/constants";
+const API_BASE_URL = `${apiUrl}/auth`;
 
 
 

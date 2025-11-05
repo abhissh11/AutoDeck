@@ -20,7 +20,7 @@ export default function Header({ onMenuClick }) {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-4 sm:px-8 py-3 border-b border-gray-800 bg-[#0d0d0f]/95 backdrop-blur-md text-gray-100 shadow-lg">
+    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 sm:px-8 py-3 border-b border-gray-800 bg-[#0d0d0f]/95 backdrop-blur-md text-gray-100 shadow-lg">
       {/* Left: Menu button + Brand */}
       <div className="flex items-center gap-3">
         {/* Mobile menu toggle button */}

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/ConsumerContext";
+import { apiUrl } from "../lib/constants";
 
 export function useChat() {
   const [messages, setMessages] = useState([]);
@@ -11,7 +12,7 @@ export function useChat() {
   const inputRef = useRef(null);
   const { token } = useAuth();
 
-  const apiBase = "http://localhost:3000/api";
+  const apiBase = apiUrl;
 
   // === Fetch User Chats on Login ===
   useEffect(() => {

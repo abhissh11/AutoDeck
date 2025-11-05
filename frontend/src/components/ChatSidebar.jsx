@@ -3,7 +3,7 @@ import { Plus, MessageSquare } from "lucide-react";
 
 export default function ChatSidebar({ chats, onSelectChat, onNewChat }) {
   return (
-    <div className="h-full flex flex-col bg-[#0d0d0f] text-gray-200">
+    <div className="h-[90svh] pt-16 flex flex-col bg-[#0d0d0f] text-gray-200">
       <div className="p-4 border-b border-gray-800">
         <button
           onClick={onNewChat}
